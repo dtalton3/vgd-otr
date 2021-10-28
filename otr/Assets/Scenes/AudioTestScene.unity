@@ -280,7 +280,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &742528088
 PrefabInstance:
@@ -481,7 +481,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1023063137
 PrefabInstance:
@@ -588,7 +588,6 @@ GameObject:
   - component: {fileID: 1420675581}
   - component: {fileID: 1420675580}
   - component: {fileID: 1420675579}
-  - component: {fileID: 1420675583}
   m_Layer: 0
   m_Name: Player Car
   m_TagString: Untagged
@@ -609,7 +608,7 @@ Transform:
   m_Children:
   - {fileID: 1839757068}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1420675579
 MonoBehaviour:
@@ -663,22 +662,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1420675583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420675577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b0e28f02ee0ae438ea70d2521fd385, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minPitch: 0.15
-  maxPitch: 1.75
-  pitchMultiplier: 1.25
-  pitchDivider: 15
 --- !u!1 &1486800186
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +790,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562967612
 GameObject:
@@ -838,7 +821,7 @@ Transform:
   m_Children:
   - {fileID: 578412575}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1745188838 stripped
 Transform:
@@ -850,106 +833,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4334133988458008, guid: b471b549ed0cf0b42b15b41a16e07b88, type: 3}
   m_PrefabInstance: {fileID: 1023063137}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1969389913
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1969389915}
-  - component: {fileID: 1969389914}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1969389914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969389913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290a39d830219cf44af6258dccfb229e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: CarEngine
-    clip: {fileID: 8300000, guid: e9643d8581d235f45a62997cba851988, type: 3}
-    volume: 0.5
-    pitch: 1.64
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: ForwardAcceleration
-    clip: {fileID: 8300000, guid: 21fedba81dfab0a4da860d960074ef71, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: ForwardDeceleration
-    clip: {fileID: 8300000, guid: 6b50c52a19c27c845a9adc71333d43ed, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: Braking
-    clip: {fileID: 8300000, guid: a8d0c24069e3c574a8f9229fcb5dba3f, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: ForwardConstantSpeed
-    clip: {fileID: 8300000, guid: e9643d8581d235f45a62997cba851988, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: ReverseAcceleration
-    clip: {fileID: 8300000, guid: 022d54410e2794249a7c962c4977dd64, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: ReverseDeceleration
-    clip: {fileID: 8300000, guid: f819464f29a5f124b8bacdad76c0be63, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
-  - name: ReverseConstantSpeed
-    clip: {fileID: 8300000, guid: 1a28469b66ddc3f4394165b2634f368d, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    playOnAwake: 0
---- !u!4 &1969389915
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969389913}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991884377
 GameObject:
   m_ObjectHideFlags: 0
