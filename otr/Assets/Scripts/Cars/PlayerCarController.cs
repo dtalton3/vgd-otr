@@ -48,6 +48,11 @@ public class PlayerCarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        if (brackFound >= 11)
+        {
+            Time.timeScale = 0f;
+            gos.Setup(Time.time - startTime);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
