@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerCarController : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class PlayerCarController : MonoBehaviour
     private float currSteerAngle;
     private float currBrakeForce; 
     private bool isBraking;
+
+    //Collectible Variables
+    public TextMeshProUGUI brackCountText;
+    private int brackFound;
 
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
@@ -26,6 +31,11 @@ public class PlayerCarController : MonoBehaviour
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
+
+    private void Start()
+    {
+        brackFound = 0;
+    }
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -82,4 +92,15 @@ public class PlayerCarController : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Brack"))
+        {
+            other.gameObject.SetActive(false);
+            brackFound ++;
+            brackCountText.text = "Brack: " + brackFound.ToString();
+        }
+    }
+    
 }
