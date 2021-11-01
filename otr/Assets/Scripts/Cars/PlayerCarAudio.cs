@@ -40,4 +40,13 @@ public class PlayerCarAudio : MonoBehaviour
             FindObjectOfType<AudioManager>().SetPitch(audioName, pitchFromCar);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Cop Car")
+        {
+            FindObjectOfType<AudioManager>().SetVolume("CarEngine", 0.1f);
+
+        }
+    }
 }
