@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCarController : MonoBehaviour
 {
+    public GameOverScript gos;
+    private float startTime;
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
@@ -27,6 +29,10 @@ public class PlayerCarController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    private void Start()
+    {
+        startTime = Time.time;
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -34,6 +40,14 @@ public class PlayerCarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Cop Car")
+        {
+            Time.timeScale = 0f;
+            gos.Setup(Time.time - startTime);
+        }
     }
 
     private void HandleMotor()
