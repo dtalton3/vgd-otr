@@ -80,7 +80,7 @@ public class PlayerCarController : MonoBehaviour
 
     private void ApplyBrakes() 
     {
-        frontLeftWheelCollider.brakeTorque = currBrakeForce;
+        frontLeftWheelCollider.brakeTorque = currBrakeForce; 
         frontRightWheelCollider.brakeTorque = currBrakeForce;
         rearLeftWheelCollider.brakeTorque = currBrakeForce;
         rearRightWheelCollider.brakeTorque = currBrakeForce;
@@ -90,7 +90,8 @@ public class PlayerCarController : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw(HORIZONTAL);
         verticalInput = Input.GetAxisRaw(VERTICAL);
-        isBraking = Input.GetKeyDown(KeyCode.S);
+        isBraking = Input.GetKey(KeyCode.Space);
+        print(isBraking);
     }
 
     private void UpdateWheels() 
