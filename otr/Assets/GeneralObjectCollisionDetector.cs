@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StreetLightCollisionDetector : MonoBehaviour
+public class GeneralObjectCollisionDetector : MonoBehaviour
 {
     public Rigidbody rb;
     // Start is called before the first frame update
