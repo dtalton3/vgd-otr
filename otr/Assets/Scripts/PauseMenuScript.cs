@@ -8,6 +8,11 @@ public class PauseMenuScript : MonoBehaviour
 {
     
     private CanvasGroup canvasGroup;
+    public void Setup(float time)
+    {
+        gameObject.SetActive(true);
+        //pointsText.text = "You lasted " + time.ToString() + " seconds!";
+    }
     
     void Start()
     {

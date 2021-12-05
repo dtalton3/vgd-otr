@@ -12,6 +12,12 @@ public class MainMenu : MonoBehaviour
         AudioListener.volume = 1;
     }
 
+    public void PlayGameAgain() {
+        SceneManager.LoadScene("GameMenuScene");
+        Time.timeScale = 1f;
+        AudioListener.volume = 1;
+    }
+
     public void QuitGame() {
         Application.Quit();
     }

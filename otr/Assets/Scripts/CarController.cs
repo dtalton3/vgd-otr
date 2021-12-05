@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
     public GameOverScript gos;
+    public PauseMenuScript pauseScreen;
+
     private float startTime;
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -51,7 +54,8 @@ public class CarController : MonoBehaviour
         if (brackFound >= 11)
         {
             Time.timeScale = 0f;
-            gos.Setup(Time.time - startTime);
+            // pauseScreen.Setup(Time.time - startTime);
+            SceneManager.LoadScene("GameWon");
         }
     }
     private void OnCollisionEnter(Collision collision)
