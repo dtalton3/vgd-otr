@@ -19,10 +19,23 @@ public class AudioManager : MonoBehaviour
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
             sound.source.playOnAwake = sound.playOnAwake;
+            sound.source.minDistance = sound.minDistance;
+            sound.source.maxDistance = sound.maxDistance;
+
+            if(sound.isThreeD)
+            {
+                sound.source.spatialBlend = 1f;
+                sound.source.rolloffMode = AudioRolloffMode.Linear;
+            }
         }
     }
 
-   public void Play(string name)
+    private void Start()
+    {
+        Play("Radio");
+    }
+
+    public void Play(string name)
     {
         Sound soundToPlay = Array.Find(sounds, sound => sound.name == name);
         if (soundToPlay == null) return;
@@ -73,5 +86,21 @@ public class AudioManager : MonoBehaviour
         if (sound == null) return false;
 
         return sound.source.isPlaying;
+    }
+
+    public void SetMinDistance(string name, float dist)
+    {
+        Sound sound = Array.Find(sounds, s => s.name == name);
+        if (sound == null) return;
+
+        sound.source.minDistance = dist;
+    }
+
+    public void SetMaxDistance(string name, float dist)
+    {
+        Sound sound = Array.Find(sounds, s => s.name == name);
+        if (sound == null) return;
+
+        sound.source.maxDistance = dist;
     }
 }

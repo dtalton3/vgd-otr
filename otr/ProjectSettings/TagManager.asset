@@ -9,6 +9,7 @@ TagManager:
   - Marcador
   - Blocks
   - Brack
+  - Cop
   layers:
   - Default
   - TransparentFX
