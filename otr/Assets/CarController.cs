@@ -56,7 +56,8 @@ public class CarController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Cop Car")
+        //print(collision.gameObject.name.Substring(0, 7));
+        if (collision.gameObject.name.Substring(0, 7) == "Cop Car")
         {
             Time.timeScale = 0f;
             gos.Setup(Time.time - startTime);

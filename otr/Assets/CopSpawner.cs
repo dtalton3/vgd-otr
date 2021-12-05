@@ -6,6 +6,7 @@ public class CopSpawner : MonoBehaviour
 {
     public GameObject respawnableCop;
     float timePassed;
+    int copCount;
     
     private Vector3[] respawnPoints = {
             new Vector3(150f, 0f, 105f),
@@ -21,7 +22,7 @@ public class CopSpawner : MonoBehaviour
     void Start()
     {
         timePassed = 0f;
-
+        copCount = 1;
     }
 
     // Update is called once per frame
@@ -29,12 +30,15 @@ public class CopSpawner : MonoBehaviour
     {
         timePassed += Time.deltaTime;
         
-        if(timePassed > 60f)
+        if(timePassed > 15f)
         {
             print("new cop car");
             timePassed = 0f;
 
-            respawnCop();
+            if (copCount < 12) {
+                respawnCop();
+                copCount++;
+            }
         } 
     }
 
