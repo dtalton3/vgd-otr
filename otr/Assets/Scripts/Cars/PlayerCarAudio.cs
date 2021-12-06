@@ -10,6 +10,8 @@ public class PlayerCarAudio : MonoBehaviour
     public float pitchDivider = 15f;
     private float pitchFromCar;
     private string audioName = "CarEngine";
+    private bool radioKeyIsDown;
+    private bool radioIsOn;
     private Rigidbody rb;
 
     private void Start()
@@ -17,6 +19,9 @@ public class PlayerCarAudio : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         FindObjectOfType<AudioManager>().Play(audioName);
         FindObjectOfType<AudioManager>().SetPitch(audioName, minPitch);
+        FindObjectOfType<AudioManager>().SetVolume(audioName, 0.1f);
+        radioKeyIsDown = false;
+        radioIsOn = true;
     }
 
     private void FixedUpdate()
@@ -39,14 +44,37 @@ public class PlayerCarAudio : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().SetPitch(audioName, pitchFromCar);
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (radioIsOn && !radioKeyIsDown)
+            {
+                FindObjectOfType<AudioManager>().SetVolume("Radio", 0f);
+                radioIsOn = false;
+            }
+            else if (!radioIsOn && !radioKeyIsDown)
+            {
+                FindObjectOfType<AudioManager>().SetVolume("Radio", 0.2f);
+                radioIsOn = true;
+            }
+
+            radioKeyIsDown = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            radioKeyIsDown = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Cop Car")
         {
-            FindObjectOfType<AudioManager>().SetVolume("CarEngine", 0.1f);
-
+            FindObjectOfType<AudioManager>().Stop("CarEngine");
+            FindObjectOfType<AudioManager>().Stop("Radio");
         }
+
+        FindObjectOfType<AudioManager>().Play("CarHit");
     }
 }

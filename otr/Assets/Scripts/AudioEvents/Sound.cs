@@ -22,4 +22,9 @@ public class Sound
     public bool loop;
     public bool playOnAwake;
 
+    public bool isThreeD;
+
+    public float minDistance;
+    public float maxDistance;
+
 }
