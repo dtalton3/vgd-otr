@@ -19,6 +19,7 @@ public class PlayerCarAudio : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         FindObjectOfType<AudioManager>().Play(audioName);
         FindObjectOfType<AudioManager>().SetPitch(audioName, minPitch);
+        FindObjectOfType<AudioManager>().SetVolume(audioName, 0.1f);
         radioKeyIsDown = false;
         radioIsOn = true;
     }
