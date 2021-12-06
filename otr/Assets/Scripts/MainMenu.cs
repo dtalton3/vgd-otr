@@ -9,7 +9,14 @@ public class MainMenu : MonoBehaviour
     public void PlayGame() {
         SceneManager.LoadScene(1);
     }
-
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("GameMenuScene");
+    }
+    public void hideMenu()
+    {
+        gameObject.SetActive(false);
+    }
     public void QuitGame() {
         Application.Quit();
     }
