@@ -17,7 +17,14 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.volume = 1;
     }
-
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("GameMenuScene");
+    }
+    public void hideMenu()
+    {
+        gameObject.SetActive(false);
+    }
     public void QuitGame() {
         Application.Quit();
     }
