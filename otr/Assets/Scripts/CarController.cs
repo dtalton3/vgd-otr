@@ -39,7 +39,7 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-
+        AudioListener.volume = 1;
         startTime = Time.time;
         brackFound = 0;
     }
@@ -64,6 +64,7 @@ public class CarController : MonoBehaviour
         if (collision.gameObject.name.Substring(0, 7) == "Cop Car")
         {
             Time.timeScale = 0f;
+            AudioListener.volume = 0;
             gos.Setup(Time.time - startTime);
         }
     }

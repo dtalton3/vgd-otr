@@ -8,7 +8,6 @@ public class CopFollow : MonoBehaviour
     private NavMeshAgent Cop;
     public GameObject respawnableCop;
     public GameObject Player;
-    public float MobDistanceRun = 4.0f;
 
 
     // Start is called before the first frame update
