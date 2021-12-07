@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Add more bracks
+//Update total count required for game over screen
+//Add gas canister
+//Gas canister is +3 bracks
+
 public class PlayerCarController : MonoBehaviour
 {
     public GameOverScript gos;
@@ -48,7 +53,7 @@ public class PlayerCarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-        if (brackFound >= 11)
+        if (brackFound >= 25)
         {
             Time.timeScale = 0f;
             gos.Setup(Time.time - startTime);
@@ -112,10 +117,17 @@ public class PlayerCarController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Brack"))
+        if (other.gameObject.CompareTag("Brack") )
         {
             other.gameObject.SetActive(false);
             brackFound++;
+            brackCountText.text = "Brack: " + brackFound.ToString();
+        }
+
+        if (other.gameObject.CompareTag("gasCan"))
+        {
+            other.gameObject.SetActive(false);
+            brackFound+=3;
             brackCountText.text = "Brack: " + brackFound.ToString();
         }
     }
