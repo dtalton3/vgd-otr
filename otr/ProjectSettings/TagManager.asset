@@ -10,6 +10,7 @@ TagManager:
   - Blocks
   - Brack
   - Cop
+  - gasCan
   layers:
   - Default
   - TransparentFX

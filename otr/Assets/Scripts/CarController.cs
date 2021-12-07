@@ -18,6 +18,7 @@ public class CarController : MonoBehaviour
     private float currSteerAngle;
     private float currBrakeForce; 
     private bool isBraking;
+    private float life;
 
     //Collectible Variables
     public TextMeshProUGUI brackCountText;
@@ -42,6 +43,7 @@ public class CarController : MonoBehaviour
         AudioListener.volume = 1;
         startTime = Time.time;
         brackFound = 0;
+        life = 5;
     }
 
     // Update is called once per frame
@@ -63,9 +65,15 @@ public class CarController : MonoBehaviour
         //print(collision.gameObject.name.Substring(0, 7));
         if (collision.gameObject.name.Substring(0, 7) == "Cop Car")
         {
-            Time.timeScale = 0f;
-            AudioListener.volume = 0;
-            gos.Setup(Time.time - startTime);
+            life--;
+            brackCountText.text = "Brack: " + brackFound.ToString() + "     Life: " + life.ToString();
+            if (life == 0)
+            {
+                Time.timeScale = 0f;
+                AudioListener.volume = 0;
+                gos.Setup(Time.time - startTime);
+            }
+            
         }
     }
 
@@ -117,13 +125,22 @@ public class CarController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    { 
         if (other.gameObject.CompareTag("Brack"))
         {
             other.gameObject.SetActive(false);
             brackFound++;
-            brackCountText.text = "Brack: " + brackFound.ToString();
+            brackCountText.text = "Brack: " + brackFound.ToString() + "     Life: " + life.ToString();
         }
+
+        if (other.gameObject.CompareTag("gasCan"))
+        {
+            other.gameObject.SetActive(false);
+            life++;
+            brackCountText.text = "Brack: " + brackFound.ToString() + "     Life count: " + life.ToString();
+        }
+
+
     }
     
 }
