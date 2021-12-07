@@ -137,7 +137,7 @@ public class CarController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             life++;
-            brackCountText.text = "Brack: " + brackFound.ToString() + "     Life count: " + life.ToString();
+            brackCountText.text = "Brack: " + brackFound.ToString() + "     Life: " + life.ToString();
         }
 
 

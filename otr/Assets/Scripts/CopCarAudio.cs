@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class CopCarAudio : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private AudioSource[] sounds;
+
+    private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("PoliceSiren");
+        sounds = GetComponents<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(!collision.gameObject.CompareTag("Player"))
+        {
+            sounds[1].Play();
+        }
     }
 }
