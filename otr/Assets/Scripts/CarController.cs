@@ -19,6 +19,8 @@ public class CarController : MonoBehaviour
     private float currBrakeForce; 
     private bool isBraking;
     private float life;
+    private float timer = 0.0f;
+    private float waitTime = 2.5f;
 
     //Collectible Variables
     public TextMeshProUGUI brackCountText;
@@ -46,6 +48,12 @@ public class CarController : MonoBehaviour
         life = 5;
     }
 
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+    }
+
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -65,14 +73,20 @@ public class CarController : MonoBehaviour
         //print(collision.gameObject.name.Substring(0, 7));
         if (collision.gameObject.name.Substring(0, 7) == "Cop Car")
         {
-            life--;
-            brackCountText.text = "Brack: " + brackFound.ToString() + "     Life: " + life.ToString();
-            if (life == 0)
+            if(timer > waitTime)
             {
-                Time.timeScale = 0f;
-                AudioListener.volume = 0;
-                gos.Setup(Time.time - startTime);
+                life--;
+                brackCountText.text = "Brack: " + brackFound.ToString() + "     Life: " + life.ToString();
+                if (life == 0)
+                {
+                    Time.timeScale = 0f;
+                    AudioListener.volume = 0;
+                    gos.Setup(Time.time - startTime);
+                }
+
+                timer = 0;
             }
+            
             
         }
     }
